@@ -13,7 +13,14 @@ interface Props {
 function ProjectCard({ img, alt, title, desc, buttonLink, cardLink }: Props) {
   const navigate = useNavigate();
   return (
-    <Card w='min-content' onClick={() => navigate(cardLink)} sx={{ cursor: 'pointer' }}>
+    <Card
+      w='min-content'
+      onClick={(e) => {
+        if ((e.target as HTMLElement).className.includes('Button')) return;
+        navigate(cardLink);
+      }}
+      sx={{ cursor: 'pointer' }}
+    >
       <Card.Section>
         <Image src={img} alt={alt} height='20vh' fit='contain' />
       </Card.Section>
