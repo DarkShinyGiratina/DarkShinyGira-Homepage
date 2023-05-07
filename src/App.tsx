@@ -9,7 +9,7 @@ function App() {
       <Row>
         <Col sm={12} md={4}>
           <ProjectCard
-            img="public/randomizerimage.png"
+            img="randomizerimage.png"
             title="My Anime Randomizer"
             desc={
               <Card.Text>
@@ -25,7 +25,7 @@ function App() {
         </Col>
         <Col sm={12} md={4}>
           <ProjectCard
-            img="public/randomizerimage.png"
+            img="randomizerimage.png"
             title="Sweltering Sun Damage Calculator"
             desc={
               <Card.Text>
