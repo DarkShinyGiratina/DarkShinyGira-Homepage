@@ -25,7 +25,7 @@ function App() {
         </Col>
         <Col sm={12} md={4}>
           <ProjectCard
-            img="randomizerimage.png"
+            img="SwelteringSun.png"
             title="Sweltering Sun Damage Calculator"
             desc={
               <Card.Text>

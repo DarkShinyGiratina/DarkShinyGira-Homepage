@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Card, Button } from "react-bootstrap";
+import "./styles/ProjectCard.css";
 
 interface Props {
   img: string;
