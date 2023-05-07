@@ -1,4 +1,4 @@
-import { Title, Text, Space } from '@mantine/core';
+import { Title, Text } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 
 export default function RandoDesc() {

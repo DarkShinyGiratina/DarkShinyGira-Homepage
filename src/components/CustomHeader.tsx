@@ -103,7 +103,7 @@ export default function CustomHeader({ links, is404 }: Props) {
   // Every time we draw the header, set the active button to whatever path we're on.
   useEffect(() => {
     setActive(window.location.pathname);
-  });
+  }, []);
 
   return (
     <Header height={{ base: 50, md: 70 }} p='md'>
