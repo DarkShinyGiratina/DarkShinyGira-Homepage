@@ -1,27 +1,36 @@
-import { ReactNode } from "react";
-import { Card, Button } from "react-bootstrap";
-import "./styles/ProjectCard.css";
-
+import { ReactNode } from 'react'
+import { Card, Button, Image, Text, Center, Space } from '@mantine/core'
 interface Props {
-  img: string;
-  title: string;
-  desc: ReactNode;
-  link: string;
+  img: string
+  alt: string
+  title: string
+  desc: ReactNode
+  link: string
 }
 
-function ProjectCard({ img, title, desc, link }: Props) {
+function ProjectCard({ img, alt, title, desc, link }: Props) {
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={img} />
-      <Card.Body>
-        <Card.Title>{title}</Card.Title>
+    <Card w='min-content'>
+      <Card.Section>
+        <Image src={img} alt={alt} height='20vh' fit='contain' />
+      </Card.Section>
+      <Text fz='lg'>{title}</Text>
+      <Text size='sm' w='15vw' c='dimmed'>
         {desc}
-        <Button variant="primary" href={link}>
+      </Text>
+      <Space h='md' />
+      <Center>
+        <Button
+          variant='gradient'
+          component='a'
+          href={link}
+          gradient={{ from: 'blue.3', to: 'teal.5' }}
+        >
           Check it out
         </Button>
-      </Card.Body>
+      </Center>
     </Card>
-  );
+  )
 }
 
-export default ProjectCard;
+export default ProjectCard
