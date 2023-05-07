@@ -1,4 +1,4 @@
-import { Card, CardGroup, Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import "./App.css";
 import ProjectCard from "./components/ProjectCard";
 
