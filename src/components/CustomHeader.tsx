@@ -9,12 +9,12 @@ import {
   Transition,
   createStyles,
   rem,
-} from '@mantine/core'
-import { useDisclosure } from '@mantine/hooks'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+} from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const HEADER_HEIGHT = rem(60)
+const HEADER_HEIGHT = rem(60);
 
 const useStyles = createStyles((theme) => ({
   links: {
@@ -73,32 +73,38 @@ const useStyles = createStyles((theme) => ({
       color: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).color,
     },
   },
-}))
+}));
 
 interface Props {
-  links: { link: string; label: string }[]
+  links: { link: string; label: string }[];
+  is404: boolean;
 }
 
-export default function CustomHeader({ links }: Props) {
-  const { classes, cx } = useStyles()
-  const [active, setActive] = useState(links[0].link)
-  const [opened, { toggle, close }] = useDisclosure(false)
-  const navigate = useNavigate()
+export default function CustomHeader({ links, is404 }: Props) {
+  const { classes, cx } = useStyles();
+  const [active, setActive] = useState(links[0].link);
+  const [opened, { toggle, close }] = useDisclosure(false);
+  const navigate = useNavigate();
   const items = links.map((link) => (
     <a
       key={link.label}
       href={link.link}
       className={cx(classes.link, { [classes.linkActive]: active === link.link })}
       onClick={(event) => {
-        event.preventDefault()
-        setActive(link.link)
-        navigate(link.link)
-        close()
+        event.preventDefault();
+        navigate(link.link);
+        close();
       }}
     >
       {link.label}
     </a>
-  ))
+  ));
+
+  // Every time we draw the header, set the active button to whatever path we're on.
+  useEffect(() => {
+    setActive(window.location.pathname);
+  });
+
   return (
     <Header height={{ base: 50, md: 70 }} p='md'>
       <div
@@ -110,7 +116,7 @@ export default function CustomHeader({ links }: Props) {
         }}
       >
         <Group spacing={'0.25vw'}>
-          <Image src='icon.png' width={'3vw'} fit='contain' />
+          <Image src={is404 ? '/luxio.png' : '/icon.png'} width={'3vw'} fit='contain' />
           <Text c='indigo.8'>DSG's Projects</Text>
         </Group>
         <Space w='lg' />
@@ -129,5 +135,5 @@ export default function CustomHeader({ links }: Props) {
         </Transition>
       </div>
     </Header>
-  )
+  );
 }

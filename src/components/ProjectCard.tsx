@@ -1,16 +1,19 @@
-import { ReactNode } from 'react'
-import { Card, Button, Image, Text, Center, Space } from '@mantine/core'
+import { ReactNode } from 'react';
+import { Card, Button, Image, Text, Center, Space } from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
 interface Props {
-  img: string
-  alt: string
-  title: string
-  desc: ReactNode
-  link: string
+  img: string;
+  alt: string;
+  title: string;
+  desc: ReactNode;
+  buttonLink: string;
+  cardLink: string;
 }
 
-function ProjectCard({ img, alt, title, desc, link }: Props) {
+function ProjectCard({ img, alt, title, desc, buttonLink, cardLink }: Props) {
+  const navigate = useNavigate();
   return (
-    <Card w='min-content'>
+    <Card w='min-content' onClick={() => navigate(cardLink)} sx={{ cursor: 'pointer' }}>
       <Card.Section>
         <Image src={img} alt={alt} height='20vh' fit='contain' />
       </Card.Section>
@@ -23,14 +26,14 @@ function ProjectCard({ img, alt, title, desc, link }: Props) {
         <Button
           variant='gradient'
           component='a'
-          href={link}
+          href={buttonLink}
           gradient={{ from: 'blue.3', to: 'teal.5' }}
         >
           Check it out
         </Button>
       </Center>
     </Card>
-  )
+  );
 }
 
-export default ProjectCard
+export default ProjectCard;

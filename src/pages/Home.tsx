@@ -1,13 +1,16 @@
-import { Grid, Text } from '@mantine/core'
-import ProjectCard from '../components/ProjectCard'
+import { Grid, Text, Title } from '@mantine/core';
+import ProjectCard from '../components/ProjectCard';
 
 export default function Home() {
   return (
     <>
+      <Title order={1} ml='5vw' ta={'center'}>
+        Welcome to my site! Click on a card to learn more about that project!
+      </Title>
       <Grid ml='5vw'>
         <Grid.Col span='content'>
           <ProjectCard
-            img='randomizerimage.png'
+            img='/randomizerimage.png'
             alt='Randomizer Logo'
             title='My Anime Randomizer'
             desc={
@@ -19,12 +22,13 @@ export default function Home() {
                 .
               </Text>
             }
-            link='https://animerandomizer.darkshinygira.com'
+            buttonLink='https://animerandomizer.darkshinygira.com'
+            cardLink='/projects/anime-randomizer'
           />
         </Grid.Col>
         <Grid.Col span='content'>
           <ProjectCard
-            img='SwelteringSun.png'
+            img='/SwelteringSun.png'
             alt='Sweltering Sun Logo'
             title='Sweltering Sun Damage Calculator'
             desc={
@@ -36,10 +40,11 @@ export default function Home() {
                 </a>
               </Text>
             }
-            link='https://sweltering.darkshinygira.com'
+            buttonLink='https://sweltering.darkshinygira.com'
+            cardLink='/projects/swelt-calc'
           />
         </Grid.Col>
       </Grid>
     </>
-  )
+  );
 }
