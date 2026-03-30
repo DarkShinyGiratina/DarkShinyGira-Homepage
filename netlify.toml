@@ -7,3 +7,8 @@
   from = "/scrambled-evless/*"
   to = "https://scrambled-evless.darkshinygira.com/:splat"
   status = 200  # 200 = proxy (transparent rewrite, URL stays the same)
+
+  [[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
